@@ -1,20 +1,20 @@
 {
-    "name": "c-runner",
-    "displayName": "C/C++ Runner",
+    "name": "c-runner-yuuashura",
+    "displayName": "Yuuashura C/C++ Runner ",
     "description": "Compile and run C/C++ programs directly from the editor, supporting both PowerShell and CMD.",
     "version": "1.0.0",
-    "publisher": "divdikpub",
+    "publisher": "Yuuashura",
     "author": {
         "name": "Yuuashura"
     },
     "license": "MIT",
-    "homepage": "https://github.com/Yuuashura/cpp-runner",
+    "homepage": "https://github.com/Yuuashura/C-Runner",
     "repository": {
         "type": "git",
-        "url": "https://github.com/Yuuashura/cpp-runner"
+        "url": "https://github.com/Yuuashura/C-Runner"
     },
     "bugs": {
-        "url": "https://github.com/Yuuashura/cpp-runner/issues"
+        "url": "https://github.com/Yuuashura/C-Runner"
     },
     "icon": "furina.png",
     "engines": {
@@ -34,14 +34,14 @@
         "Other"
     ],
     "activationEvents": [
-        "onCommand:cpp-runner.run"
+        "onCommand:C-Runner.run"
     ],
     "main": "./out/extension.js",
     "contributes": {
         "configuration": {
             "title": "C/C++ Runner Configuration",
             "properties": {
-                "cpp-runner.executionShell": {
+                "C-Runner.executionShell": {
                     "type": "string",
                     "default": "PowerShell",
                     "enum": ["PowerShell", "CMD"],
@@ -51,69 +51,69 @@
         },
         "commands": [
             {
-                "command": "cpp-runner.run",
+                "command": "C-Runner.run",
                 "title": "Run C/C++ File",
                 "icon": "$(debug-start)"
             },
             {
-                "command": "cpp-runner.restart",
+                "command": "C-Runner.restart",
                 "title": "Restart C/C++ Run",
                 "icon": "$(debug-restart)"
             },
             {
-                "command": "cpp-runner.stop",
+                "command": "C-Runner.stop",
                 "title": "Stop C/C++ Run",
                 "icon": "$(debug-stop)"
             },
             {
-              "command": "cpp-runner.openSettings",
+              "command": "C-Runner.openSettings",
               "title" : "Open C/C++ Runner Settings"
             }
         ],
         "keybindings": [
             {
-                "command": "cpp-runner.run",
-                "when": "!cpp-runner.running",
+                "command": "C-Runner.run",
+                "when": "!C-Runner.running",
                 "key": "f5"
             },
             {
-                "command": "cpp-runner.restart",
-                "when": "cpp-runner.running",
+                "command": "C-Runner.restart",
+                "when": "C-Runner.running",
                 "key": "f5"
             }
         ],
         "menus": {
             "editor/title/run": [
                 {
-                    "command": "cpp-runner.run",
-                    "when": "editorLangId =~ /(c|cpp)/ && !cpp-runner.running",
+                    "command": "C-Runner.run",
+                    "when": "editorLangId =~ /(c|cpp)/ && !C-Runner.running",
                     "group": "navigation"
                 },
                 {
-                    "command": "cpp-runner.restart",
-                    "when": "editorLangId =~ /(c|cpp)/ && cpp-runner.running",
+                    "command": "C-Runner.restart",
+                    "when": "editorLangId =~ /(c|cpp)/ && C-Runner.running",
                     "group": "navigation"
                 },
                 {
-                    "command": "cpp-runner.stop",
-                    "when": "editorLangId =~ /(c|cpp)/ && cpp-runner.running",
+                    "command": "C-Runner.stop",
+                    "when": "editorLangId =~ /(c|cpp)/ && C-Runner.running",
                     "group": "navigation"
                 }
             ],
             "editor/context": [
                 {
-                    "command": "cpp-runner.run",
-                    "when": "editorLangId =~ /(c|cpp)/ && !cpp-runner.running",
+                    "command": "C-Runner.run",
+                    "when": "editorLangId =~ /(c|cpp)/ && !C-Runner.running",
                     "group": "navigation@1"
                 },
                 {
-                    "command": "cpp-runner.restart",
-                    "when": "editorLangId =~ /(c|cpp)/ && cpp-runner.running",
+                    "command": "C-Runner.restart",
+                    "when": "editorLangId =~ /(c|cpp)/ && C-Runner.running",
                     "group": "navigation@1"
                 },
                 {
-                    "command": "cpp-runner.stop",
-                    "when": "editorLangId =~ /(c|cpp)/ && cpp-runner.running",
+                    "command": "C-Runner.stop",
+                    "when": "editorLangId =~ /(c|cpp)/ && C-Runner.running",
                     "group": "navigation@1"
                 }
             ]
