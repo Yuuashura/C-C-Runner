@@ -63,5 +63,5 @@ Ketika Anda menjalankan *extension*:
 3.  *Extension* mengkompilasi *file* tersebut.
 4.  Jendela *shell* eksternal (**PS** atau **CMD**) terbuka, menjalankan program Anda, dan tetap terbuka (*pause*) hingga Anda menekan tombol apa pun.
 
-# ©
+### Copyright
 - [@RomiKusumaBakti](https://github.com/romikusumabakti)
