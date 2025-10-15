@@ -2,7 +2,7 @@
     "name": "c-runner-yuuashura",
     "displayName": "Yuuashura C/C++ Runner ",
     "description": "Compile and run C/C++ programs directly from the editor, supporting both PowerShell and CMD.",
-    "version": "1.0.0",
+    "version": "1.0.1",
     "publisher": "Yuuashura",
     "author": {
         "name": "Romi Kusuma Bakti"
