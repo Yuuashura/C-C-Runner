@@ -4,11 +4,11 @@ import * as vscode from "vscode";
 const outputChannel = vscode.window.createOutputChannel("C/C++ Runner");
 
 /**
- * Menggunakan powershell.exe untuk membuka program di jendela terpisah dan menahannya.
+ * Menggunakan powershell.exe untuk membuka program di jendela terpisah dan menahannya secara DIAM-DIAM.
  */
 export function runInPowerShell(fileDirectory: string, executableName: string) {
-    // Command PowerShell: -NoExit menjaga jendela tetap terbuka, Read-Host meniru pause.
-    const shellCommand = `start powershell -NoExit -Command "& { .\\${executableName}; Write-Host ''; Write-Host 'Tekan ENTER untuk melanjutkan...' -ForegroundColor Yellow; Read-Host | Out-Null }"`;
+    // FIX: Menggunakan ReadKey() untuk menahan jendela secara diam-diam tanpa mencetak pesan prompt.
+    const shellCommand = `start powershell -NoExit -Command "& { .\\${executableName}; $Host.UI.RawUI.ReadKey('NoEcho,IncludeKeyDown') | Out-Null }"`;
     
     exec(shellCommand, { cwd: fileDirectory }, (error) => {
         if (error) {
@@ -19,11 +19,11 @@ export function runInPowerShell(fileDirectory: string, executableName: string) {
 }
 
 /**
- * Menggunakan cmd.exe untuk membuka program di jendela terpisah dan menahannya.
+ * Menggunakan cmd.exe untuk membuka program di jendela terpisah dan menahannya secara DIAM-DIAM.
  */
 export function runInCMD(fileDirectory: string, executableName: string) {
-    // Command CMD: start cmd /c menjalankan executable dan menahan jendela dengan 'pause'
-    const shellCommand = `start cmd /c ""${executableName}" & pause"`;
+    // FIX: Menggunakan 'pause > nul' untuk menahan jendela CMD secara diam-diam.
+    const shellCommand = `start cmd /c ""${executableName}" & pause > nul"`; 
     
     exec(shellCommand, { cwd: fileDirectory }, (error) => {
         if (error) {
@@ -37,11 +37,8 @@ export function runInCMD(fileDirectory: string, executableName: string) {
  * Menghentikan semua proses shell (CMD dan PowerShell) yang mungkin sedang menjalankan program.
  */
 export function stopShellProcesses(callback?: () => void) {
-    // Kill PowerShell processes
     exec('taskkill /f /t /im powershell.exe', () => {
-        // Setelah PowerShell dikill, kill juga CMD.
         exec('taskkill /f /t /im cmd.exe', () => {
-            // Panggil callback setelah keduanya selesai (untuk restart)
             if (callback) {
                 callback();
             }
