@@ -1,63 +1,67 @@
-## C/C++ Runner
+
+# C/C++ Runner
+
 ### 🚀 Overview
 C/C++ Runner adalah extension Visual Studio Code sederhana yang dirancang untuk mempercepat alur kerja Anda dengan memungkinkan kompilasi dan eksekusi file C dan C++ secara cepat menggunakan GCC/G++ di jendela konsol terpisah.
 
 Extension ini unik karena memberikan Anda kontrol penuh atas shell eksekusi (PowerShell atau CMD) dan secara otomatis menahan jendela konsol agar Anda dapat melihat output program tanpa perlu menambahkan command system("pause") secara manual.
 
-Fitur Utama
-Kompilasi Cepat: Menggunakan gcc untuk file .c dan g++ untuk file .cpp.
 
-Eksekusi Eksternal: Menjalankan program di jendela konsol PowerShell atau CMD terpisah.
 
-Pause Otomatis: Jendela konsol akan otomatis tertahan (silent pause) hingga Anda menutupnya, tanpa memerlukan command pause di kode sumber Anda.
 
-Kontrol Penuh: Tombol Run, Stop, dan Restart di bilah judul editor dan context menu.
 
-Konfigurasi Shell: Pilih shell eksekusi default sesuai preferensi Anda.
+## Fitur Utama
+- Kompilasi Cepat: Menggunakan gcc untuk file .c dan g++ untuk file .cpp.
+- Eksekusi Eksternal: Program berjalan di jendela konsol PowerShell atau CMD terpisah.
+- Silent Pause Otomatis: Jendela konsol akan tetap terbuka setelah program selesai, menunggu Anda menekan tombol apa pun, tanpa menampilkan pesan default yang mengganggu.
+- Kontrol Penuh: Tombol Run, Stop, dan Restart tersedia di bilah judul editor.
+- Konfigurasi Shell: Pilih shell eksekusi default Anda melalui pengaturan VS Code
 
-🛠️ Persyaratan
-Untuk menggunakan extension ini, Anda harus sudah menginstal kompiler GCC (GNU Compiler Collection) pada sistem Anda.
 
-MinGW-w64 (Disarankan): Pastikan Anda telah menginstal MinGW-w64 dan menambahkan path ke folder bin (misalnya, C:\mingw64\bin) ke Environment Variables PATH Windows Anda.
+## 🛠️ Persyaratan
 
-📦 Instalasi
-Karena extension ini belum dipublikasikan di Marketplace (atau jika Anda menginstalnya dari sumber), Anda harus menginstal file .vsix secara manual.
+Untuk menggunakan extension ini, Anda harus memiliki kompiler GCC (GNU Compiler Collection) yang terinstal pada sistem Anda.
 
-Unduh .vsix: Dapatkan file .vsix terbaru dari halaman rilis GitHub Anda.
 
-Buka VS Code: Buka Visual Studio Code.
+- `MinGW-w64 (Disarankan): Pastikan Anda telah menginstal MinGW-w64 dan menambahkan path ke folder bin (misalnya, C:\mingw64\bin) ke Environment Variables PATH Windows Anda.`
 
-Buka Extensions View: Klik ikon Extensions (Ctrl+Shift+X).
 
-Install dari VSIX: Klik ikon tiga titik (...) di kanan atas tampilan Extensions, lalu pilih "Install from VSIX..."
+## Penggunaan & Command
 
-Pilih file .vsix yang telah Anda unduh.
+### `CTRL + SHIFT + P`
 
-⚙️ Penggunaan & Command
-Command Palette (Ctrl+Shift+P)
-Semua command dapat diakses melalui Command Palette.
+| Command ID | Title (Judul) | Function (Fungsi/Keterangan) |
+| :--- | :--- | :--- |
+| `cpp-runner.run (F5)` | **Jalankan File C/C++** | Mengkompilasi dan mengeksekusi program. |
+| `cpp-runner.restart` | **Restart Jalankan C/C++** | Menghentikan proses yang sedang berjalan dan memulai ulang eksekusi. |
+| `cpp-runner.stop` | **Hentikan Jalankan C/C++** | Menghentikan paksa (terminate) proses eksekusi konsol. |
+| `cpp-runner.openSettings` | **Buka Pengaturan C/C++ Runner** | Menavigasi dengan cepat ke halaman konfigurasi ekstensi. |
 
-Command ID	Title	Keterangan
-cpp-runner.run	Run C/C++ File	Kompilasi dan eksekusi program.
-cpp-runner.restart	Restart C/C++ Run	Menghentikan proses yang berjalan dan menjalankannya kembali.
-cpp-runner.stop	Stop C/C++ Run	Menghentikan paksa proses eksekusi konsol.
-cpp-runner.openSettings	Open C/C++ Runner Settings	Langsung membuka halaman konfigurasi extension.
+## ⚙️ Konfigurasi Shell (Penting!)
 
-Ekspor ke Spreadsheet
-Keybindings Default
-Run / Restart: Tekan F5
+Fitur ini memungkinkan Anda memilih *shell* mana yang akan digunakan *extension* untuk mengeksekusi program Anda. Nilai *default*-nya adalah **PowerShell**.
 
-⚙️ Konfigurasi Shell
-Anda dapat memilih shell mana yang akan digunakan extension untuk eksekusi program. Defaultnya adalah PowerShell.
+### Cara Mengubah Shell Default
 
-Buka Command Palette (Ctrl+Shift+P).
+1.  **Akses Pengaturan:** Buka **Command Palette** (Ctrl+Shift+P atau F1).
+2.  Ketik dan pilih *command*: **`Open C/C++ Runner Settings`**.
+3.  Di bilah pencarian pengaturan, cari: **`C/C++ Runner: Execution Shell`**.
+4.  Pilih salah satu dari opsi berikut:
+    * **`PowerShell` (Disarankan):** Menggunakan `powershell.exe`.
+    * **`CMD`:** Menggunakan `cmd.exe`.
 
-Ketik dan pilih "Open C/C++ Runner Settings".
 
-Cari pengaturan C/C++ Runner: Execution Shell.
 
-Pilih salah satu dari:
+---
 
-PowerShell (Disarankan): Menggunakan powershell.exe.
+### Alur Kerja
 
-CMD: Menggunakan cmd.exe
+Ketika Anda menjalankan *extension*:
+
+1.  Buka *file* C atau C++ Anda.
+2.  Tekan **F5** (atau klik ikon **Run** di bilah judul *editor*).
+3.  *Extension* mengkompilasi *file* tersebut.
+4.  Jendela *shell* eksternal (**PS** atau **CMD**) terbuka, menjalankan program Anda, dan tetap terbuka (*pause*) hingga Anda menekan tombol apa pun.
+
+# ©
+- [@RomiKusumaBakti](https://github.com/romikusumabakti)
