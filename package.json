@@ -1,0 +1,144 @@
+{
+    "name": "c-runner",
+    "displayName": "C/C++ Runner",
+    "description": "Compile and run C/C++ programs directly from the editor, supporting both PowerShell and CMD.",
+    "version": "1.0.0",
+    "publisher": "divdikpub",
+    "author": {
+        "name": "Yuuashura"
+    },
+    "license": "MIT",
+    "homepage": "https://github.com/Yuuashura/cpp-runner",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/Yuuashura/cpp-runner"
+    },
+    "bugs": {
+        "url": "https://github.com/Yuuashura/cpp-runner/issues"
+    },
+    "icon": "furina.png",
+    "engines": {
+        "vscode": "^1.63.0"
+    },
+    "keywords": [
+        "c",
+        "cpp",
+        "run",
+        "compile",
+        "runner",
+        "gcc",
+        "g++"
+    ],
+    "categories": [
+        "Programming Languages",
+        "Other"
+    ],
+    "activationEvents": [
+        "onCommand:cpp-runner.run"
+    ],
+    "main": "./out/extension.js",
+    "contributes": {
+        "configuration": {
+            "title": "C/C++ Runner Configuration",
+            "properties": {
+                "cpp-runner.executionShell": {
+                    "type": "string",
+                    "default": "PowerShell",
+                    "enum": ["PowerShell", "CMD"],
+                    "description": "Pilih shell yang digunakan untuk menjalankan program hasil kompilasi. Default: PowerShell."
+                }
+            }
+        },
+        "commands": [
+            {
+                "command": "cpp-runner.run",
+                "title": "Run C/C++ File",
+                "icon": "$(debug-start)"
+            },
+            {
+                "command": "cpp-runner.restart",
+                "title": "Restart C/C++ Run",
+                "icon": "$(debug-restart)"
+            },
+            {
+                "command": "cpp-runner.stop",
+                "title": "Stop C/C++ Run",
+                "icon": "$(debug-stop)"
+            },
+            {
+              "command": "cpp-runner.openSettings",
+              "title" : "Open C/C++ Runner Settings"
+            }
+        ],
+        "keybindings": [
+            {
+                "command": "cpp-runner.run",
+                "when": "!cpp-runner.running",
+                "key": "f5"
+            },
+            {
+                "command": "cpp-runner.restart",
+                "when": "cpp-runner.running",
+                "key": "f5"
+            }
+        ],
+        "menus": {
+            "editor/title/run": [
+                {
+                    "command": "cpp-runner.run",
+                    "when": "editorLangId =~ /(c|cpp)/ && !cpp-runner.running",
+                    "group": "navigation"
+                },
+                {
+                    "command": "cpp-runner.restart",
+                    "when": "editorLangId =~ /(c|cpp)/ && cpp-runner.running",
+                    "group": "navigation"
+                },
+                {
+                    "command": "cpp-runner.stop",
+                    "when": "editorLangId =~ /(c|cpp)/ && cpp-runner.running",
+                    "group": "navigation"
+                }
+            ],
+            "editor/context": [
+                {
+                    "command": "cpp-runner.run",
+                    "when": "editorLangId =~ /(c|cpp)/ && !cpp-runner.running",
+                    "group": "navigation@1"
+                },
+                {
+                    "command": "cpp-runner.restart",
+                    "when": "editorLangId =~ /(c|cpp)/ && cpp-runner.running",
+                    "group": "navigation@1"
+                },
+                {
+                    "command": "cpp-runner.stop",
+                    "when": "editorLangId =~ /(c|cpp)/ && cpp-runner.running",
+                    "group": "navigation@1"
+                }
+            ]
+        }
+    },
+    "scripts": {
+        "vscode:prepublish": "npm run compile",
+        "compile": "tsc -p ./",
+        "watch": "tsc -watch -p ./",
+        "pretest": "npm run compile && npm run lint",
+        "lint": "eslint src --ext ts",
+        "test": "node ./out/test/runTest.js"
+    },
+    "devDependencies": {
+        "@types/vscode": "^1.63.0",
+        "@types/glob": "^7.1.4",
+        "@types/mocha": "^9.0.0",
+        "@types/node": "14.x",
+        "@types/child_process": "^1.0.2",
+        "@typescript-eslint/eslint-plugin": "^5.1.0",
+        "@typescript-eslint/parser": "^5.1.0",
+        "eslint": "^8.1.0",
+        "glob": "^7.1.7",
+        "mocha": "^9.1.3",
+        "typescript": "^4.4.4",
+        "@vscode/test-electron": "^1.6.2"
+    }
+}
